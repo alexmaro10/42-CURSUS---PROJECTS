@@ -6,17 +6,17 @@
 <div align="center">
 	<h1>42 Project Badges</h1>
 	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/born2beroot.webp" width="100" width="100" />
-	<img src="badges/cpp.webp" width="100" />
-	<img src="badges/cub3d_bonus.webp" width="100" />
-	<img src="badges/ft_printf.webp" width="100" />
-	<img src="badges/get_next_line.webp" width="100" />
-	<img src="badges/libft_bonus.webp" width="100" />
-	<img src="badges/minishell.webp" width="100" />
-	<img src="badges/minitalk.webp" width="100" />
-	<img src="badges/netpractice.webp" width="100" />
-	<img src="badges/philosophers.webp" width="100" />
-	<img src="badges/push_swap.webp" width="100" />
-	<img src="badges/so_long_bonus.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/cpp.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/cub3d_bonus.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/ft_printf.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/get_next_line.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/libft_bonus.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/minishell.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/minitalk.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/netpractice.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/philosophers.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/push_swap.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/so_long_bonus.webp" width="100" />
 </div>
 
 <p align="center">
