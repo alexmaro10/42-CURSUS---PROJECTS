@@ -5,7 +5,7 @@
 </p>
 <div align="center">
 	<h1>42 Project Badges</h1>
-	<img src="badges/born2beroot.webp" width="100" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/born2beroot.webp" width="100" width="100" />
 	<img src="badges/cpp.webp" width="100" />
 	<img src="badges/cub3d_bonus.webp" width="100" />
 	<img src="badges/ft_printf.webp" width="100" />
