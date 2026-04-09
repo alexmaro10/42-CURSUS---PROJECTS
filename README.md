@@ -42,7 +42,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ---
 
 ## 🗂️ Navegación rápida
-<p align="center">
+
 | Proyecto                         | Descripción              | Estado |
 | -------------------------------- | ------------------------ | ------ |
 | [Libft](./1_Libft)                 | Librería estándar en C   | 🟢     |
@@ -54,7 +54,6 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 | [philosophers](./8_Philosophers)   | Concurrencia             | 🟢     |
 | [minishell](./7_minishell)         | Shell UNIX               | 🟢     |
 | [CPP](./CPP)                     | Introduccion al lenguaje C++ | 🟢     |
-</p>
 
 ---
 
