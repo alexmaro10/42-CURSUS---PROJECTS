@@ -31,12 +31,12 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 | [Libft](./libft)                 | Librería estándar en C   | 🟢     |
 | [ft_printf](./ft_printf)         | Implementación de printf | 🟢     |
 | [get_next_line](./get_next_line) | Lectura de archivos      | 🟢     |
-| [Born2beroot](./born2beroot)     | Sysadmin & VM            | 🟢     |
-| [push_swap](./push_swap)         | Algoritmos de ordenación | 🟡     |
-| [so_long](./so_long)             | Juego 2D                 | 🟡     |
-| [minitalk](./minitalk)           | Señales UNIX             | 🟡     |
-| [philosophers](./philosophers)   | Concurrencia             | 🔴     |
-| [minishell](./minishell)         | Shell UNIX               | 🔴     |
+| [push_swap](./push_swap)         | Algoritmos de ordenación | 🟢     |
+| [so_long](./so_long)             | Juego 2D                 | 🟢     |
+| [minitalk](./minitalk)           | Señales UNIX             | 🟢     |
+| [philosophers](./philosophers)   | Concurrencia             | 🟢     |
+| [minishell](./minishell)         | Shell UNIX               | 🟢     |
+| [CPP](./CPP)                     | Introduccion al lenguaje C++ | 🟢     |
 
 ---
 
