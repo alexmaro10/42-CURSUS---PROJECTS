@@ -28,14 +28,14 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 | Proyecto                         | Descripción              | Estado |
 | -------------------------------- | ------------------------ | ------ |
-| [Libft](./libft)                 | Librería estándar en C   | 🟢     |
-| [ft_printf](./ft_printf)         | Implementación de printf | 🟢     |
-| [get_next_line](./get_next_line) | Lectura de archivos      | 🟢     |
-| [push_swap](./push_swap)         | Algoritmos de ordenación | 🟢     |
-| [so_long](./so_long)             | Juego 2D                 | 🟢     |
-| [minitalk](./minitalk)           | Señales UNIX             | 🟢     |
-| [philosophers](./philosophers)   | Concurrencia             | 🟢     |
-| [minishell](./minishell)         | Shell UNIX               | 🟢     |
+| [Libft](./1_libft)                 | Librería estándar en C   | 🟢     |
+| [ft_printf](./2_ft_printf)         | Implementación de printf | 🟢     |
+| [get_next_line](./3_get_next_line) | Lectura de archivos      | 🟢     |
+| [push_swap](./4_push_swap)         | Algoritmos de ordenación | 🟢     |
+| [so_long](./5_so_long)             | Juego 2D                 | 🟢     |
+| [minitalk](./6_minitalk)           | Señales UNIX             | 🟢     |
+| [philosophers](./8_philosophers)   | Concurrencia             | 🟢     |
+| [minishell](./7_minishell)         | Shell UNIX               | 🟢     |
 | [CPP](./CPP)                     | Introduccion al lenguaje C++ | 🟢     |
 
 ---
