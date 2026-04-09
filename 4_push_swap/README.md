@@ -33,5 +33,7 @@ Este enfoque resulta eficaz porque reduce la complejidad del problema al dividir
 Como se ve en las imagenes este algoritmo nos permite ordenar listas muy grandes de numero en pocos movimientos:
 
 10 numeros: 24 - 36 movimientos.
+
 100 numeros: 644 movimientos.
+
 500 numeros: < 5900 movimientos
