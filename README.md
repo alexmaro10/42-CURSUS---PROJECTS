@@ -131,8 +131,8 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
   <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white"/>
   <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
   <img src="https://img.shields.io/badge/Makefile-000000?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnu-bash"/>
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg"/>
+  <img src="https://www.svgrepo.com/show/303548/git-icon-logo.svg" width="100"/>
   <img src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png" width="100"/>
 </p>
 
