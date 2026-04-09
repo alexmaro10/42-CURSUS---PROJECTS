@@ -128,10 +128,9 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ## 🧰 Stack técnico
 
 <p align="center">
-  <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
-  <img src="https://img.shields.io/badge/Makefile-000000?style=for-the-badge"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" width="100"/>
+  <img src="https://images.seeklogo.com/logo-png/48/2/linux-logo-png_seeklogo-482333.png" width="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg" width="100"/>
   <img src="https://www.svgrepo.com/show/303548/git-icon-logo.svg" width="100"/>
   <img src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png" width="100"/>
 </p>
