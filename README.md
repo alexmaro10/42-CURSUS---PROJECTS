@@ -28,13 +28,13 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 | Proyecto                         | Descripción              | Estado |
 | -------------------------------- | ------------------------ | ------ |
-| [Libft](./1_libft)                 | Librería estándar en C   | 🟢     |
+| [Libft](./1_Libft)                 | Librería estándar en C   | 🟢     |
 | [ft_printf](./2_ft_printf)         | Implementación de printf | 🟢     |
 | [get_next_line](./3_get_next_line) | Lectura de archivos      | 🟢     |
 | [push_swap](./4_push_swap)         | Algoritmos de ordenación | 🟢     |
 | [so_long](./5_so_long)             | Juego 2D                 | 🟢     |
 | [minitalk](./6_minitalk)           | Señales UNIX             | 🟢     |
-| [philosophers](./8_philosophers)   | Concurrencia             | 🟢     |
+| [philosophers](./8_Philosophers)   | Concurrencia             | 🟢     |
 | [minishell](./7_minishell)         | Shell UNIX               | 🟢     |
 | [CPP](./CPP)                     | Introduccion al lenguaje C++ | 🟢     |
 
@@ -47,7 +47,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🔧 Libft
 
 <p align="center">
-  <img src="<!-- INSERT IMAGE: libft badge -->" width="150"/>
+  <img src="https://github.com/eliarisalvares/libft_42sp" width="150"/>
 </p>
 
 📌 Recreación de funciones estándar en C
