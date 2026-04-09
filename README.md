@@ -3,6 +3,21 @@
 <p align="center">
   <img src="<!-- INSERT: banner image -->" alt="42 banner" width="800"/>
 </p>
+<div align="center">
+	<h1>42 Project Badges</h1>
+	<img src="badges/born2beroot.webp" width="100" width="100" />
+	<img src="badges/cpp.webp" width="100" />
+	<img src="badges/cub3d_bonus.webp" width="100" />
+	<img src="badges/ft_printf.webp" width="100" />
+	<img src="badges/get_next_line.webp" width="100" />
+	<img src="badges/libft_bonus.webp" width="100" />
+	<img src="badges/minishell.webp" width="100" />
+	<img src="badges/minitalk.webp" width="100" />
+	<img src="badges/netpractice.webp" width="100" />
+	<img src="badges/philosophers.webp" width="100" />
+	<img src="badges/push_swap.webp" width="100" />
+	<img src="badges/so_long_bonus.webp" width="100" />
+</div>
 
 <p align="center">
   🚀 Mi viaje en el Common Core de 42  
@@ -46,20 +61,12 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ### 🔧 Libft
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/85964972/132143244-c89cd42b-ec35-4bb0-a348-3370efc89db2.png" width="150"/>
-</p>
-
 📌 Recreación de funciones estándar en C
 💡 Base fundamental para todos los proyectos posteriores
 
 ---
 
 ### 🖨️ ft_printf
-
-<p align="center">
-  <img src="https://github.com/leogaudin/42_project_badges/blob/main/badges/ft_printf.webp" width="150"/>
-</p>
 
 📌 Implementación propia de `printf`
 💡 Manejo de formatos, flags y variadic functions
@@ -68,20 +75,12 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ### 📄 get_next_line
 
-<p align="center">
-  <img src="<!-- INSERT IMAGE: gnl badge -->" width="150"/>
-</p>
-
 📌 Lectura eficiente de líneas desde un file descriptor
 💡 Gestión de memoria y buffers
 
 ---
 
 ### 🐧 Born2beroot
-
-<p align="center">
-  <img src="<!-- INSERT IMAGE: b2br badge -->" width="150"/>
-</p>
 
 📌 Configuración de servidor Linux en VM
 💡 Seguridad, usuarios, sudo y servicios
@@ -90,9 +89,6 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ### 🔢 push_swap
 
-<p align="center">
-  <img src="<!-- INSERT IMAGE: push_swap badge -->" width="150"/>
-</p>
 
 📌 Ordenación con operaciones limitadas
 💡 Algoritmos y optimización
@@ -101,20 +97,12 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ### 🎮 so_long
 
-<p align="center">
-  <img src="<!-- INSERT IMAGE: so_long badge -->" width="150"/>
-</p>
-
 📌 Juego 2D básico
 💡 Gráficos, eventos y gestión de mapas
 
 ---
 
 ### 📡 minitalk
-
-<p align="center">
-  <img src="<!-- INSERT IMAGE: minitalk badge -->" width="150"/>
-</p>
 
 📌 Comunicación entre procesos con señales
 💡 IPC en UNIX
@@ -123,10 +111,6 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ### 🍝 philosophers
 
-<p align="center">
-  <img src="<!-- INSERT IMAGE: philosophers badge -->" width="150"/>
-</p>
-
 📌 Problema de concurrencia
 💡 Threads, mutexes y sincronización
 
@@ -134,20 +118,8 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ### 🐚 minishell
 
-<p align="center">
-  <img src="<!-- INSERT IMAGE: minishell badge -->" width="150"/>
-</p>
-
 📌 Shell tipo bash
 💡 Parsing, procesos y ejecución
-
----
-
-## 📊 Progreso
-
-<p align="center">
-  <img src="<!-- INSERT IMAGE: progress chart -->" width="500"/>
-</p>
 
 ---
 
