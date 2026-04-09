@@ -133,7 +133,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
   <img src="https://img.shields.io/badge/Makefile-000000?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnu-bash"/>
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-  <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white"/>
+  <img src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"/>
 </p>
 
 ---
