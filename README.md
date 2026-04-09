@@ -58,7 +58,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🖨️ ft_printf
 
 <p align="center">
-  <img src="<!-- INSERT IMAGE: ft_printf badge -->" width="150"/>
+  <img src="https://github.com/leogaudin/42_project_badges/blob/main/badges/ft_printf.webp" width="150"/>
 </p>
 
 📌 Implementación propia de `printf`
