@@ -63,7 +63,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ### 🔧 Libft
 
-📌 Recreación de funciones estándar en C
+📌 Recreación de funciones estándar en C\n
 💡 Base fundamental para todos los proyectos posteriores
 
 ---
