@@ -47,7 +47,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🔧 Libft
 
 <p align="center">
-  <img src="https://github.com/eliarisalvares/libft_42sp" width="150"/>
+  <img src="https://user-images.githubusercontent.com/85964972/132143244-c89cd42b-ec35-4bb0-a348-3370efc89db2.png" width="150"/>
 </p>
 
 📌 Recreación de funciones estándar en C
