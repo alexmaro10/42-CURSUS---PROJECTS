@@ -1,7 +1,7 @@
 # 🧠💻 42 Common Core Portfolio
 
 <p align="center">
-  <img src="<!-- INSERT: banner image -->" alt="42 banner" width="800"/>
+  <img src="https://www.42malaga.com/wp-content/uploads/2021/01/42-Malaga-Fundacion-Telefonica.png" alt="42 banner" width="800"/>
 </p>
 <div align="center">
 	<h1>42 Project Badges</h1>
@@ -43,17 +43,18 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 ## 🗂️ Navegación rápida
 
-| Proyecto                         | Descripción              | Estado |
-| -------------------------------- | ------------------------ | ------ |
-| [Libft](./1_Libft)                 | Librería estándar en C   | 🟢     |
-| [ft_printf](./2_ft_printf)         | Implementación de printf | 🟢     |
-| [get_next_line](./3_get_next_line) | Lectura de archivos      | 🟢     |
-| [push_swap](./4_push_swap)         | Algoritmos de ordenación | 🟢     |
-| [so_long](./5_so_long)             | Juego 2D                 | 🟢     |
-| [minitalk](./6_minitalk)           | Señales UNIX             | 🟢     |
-| [philosophers](./8_Philosophers)   | Concurrencia             | 🟢     |
-| [minishell](./7_minishell)         | Shell UNIX               | 🟢     |
-| [CPP](./CPP)                     | Introduccion al lenguaje C++ | 🟢     |
+|              Proyecto              |         Descripción          |  Estado |
+| ---------------------------------- | ---------------------------- | ------- |
+| [Libft](./1_Libft)                 | Librería estándar en C       | 🟢 125% |
+| [ft_printf](./2_ft_printf)         | Implementación de printf     | 🟢 100% |
+| [get_next_line](./3_get_next_line) | Lectura de archivos          | 🟢 103% |
+| [push_swap](./4_push_swap)         | Algoritmos de ordenación     | 🟢 100% |
+| [so_long](./5_so_long)             | Juego 2D                     | 🟢 125% |
+| [minitalk](./6_minitalk)           | Señales UNIX                 | 🟢 100% |
+| [philosophers](./8_Philosophers)   | Concurrencia                 | 🟢 100% |
+| [minishell](./7_minishell)         | Shell UNIX                   | 🟢 100% |
+| [cub3D](./9_cub3D)                  | Juego 3D (Raycasting)        | 🟢 120% |
+| [CPP](./CPP)                       | Introduccion al lenguaje C++ | 🟡 50%  |
 
 ---
 
@@ -64,6 +65,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🔧 Libft
 
 📌 Recreación de funciones estándar en C
+
 💡 Base fundamental para todos los proyectos posteriores
 
 ---
@@ -71,6 +73,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🖨️ ft_printf
 
 📌 Implementación propia de `printf`
+
 💡 Manejo de formatos, flags y variadic functions
 
 ---
@@ -78,6 +81,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 📄 get_next_line
 
 📌 Lectura eficiente de líneas desde un file descriptor
+
 💡 Gestión de memoria y buffers
 
 ---
@@ -85,6 +89,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🐧 Born2beroot
 
 📌 Configuración de servidor Linux en VM
+
 💡 Seguridad, usuarios, sudo y servicios
 
 ---
@@ -93,6 +98,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 
 
 📌 Ordenación con operaciones limitadas
+
 💡 Algoritmos y optimización
 
 ---
@@ -100,6 +106,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🎮 so_long
 
 📌 Juego 2D básico
+
 💡 Gráficos, eventos y gestión de mapas
 
 ---
@@ -107,6 +114,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 📡 minitalk
 
 📌 Comunicación entre procesos con señales
+
 💡 IPC en UNIX
 
 ---
@@ -114,6 +122,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🍝 philosophers
 
 📌 Problema de concurrencia
+
 💡 Threads, mutexes y sincronización
 
 ---
@@ -121,18 +130,35 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ### 🐚 minishell
 
 📌 Shell tipo bash
+
 💡 Parsing, procesos y ejecución
+
+---
+
+### 🎮 cub3D
+
+📌 Juego 3D básico
+
+💡 Inputs, raycasting, texturas y gestion de mapas
+
+---
+
+### 🔧 CPP
+
+📌 Principios de C++
+
+💡 clases, namespaces, constructores y destructores, gestión de memoria en C++, herencia, abstracción, sobrecarga, plantillas, tipos y herramientas de la librería estándar de C++.
 
 ---
 
 ## 🧰 Stack técnico
 
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" width="100"/>
-  <img src="https://images.seeklogo.com/logo-png/48/2/linux-logo-png_seeklogo-482333.png" width="100"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg" width="100"/>
-  <img src="https://www.svgrepo.com/show/303548/git-icon-logo.svg" width="100"/>
-  <img src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png" width="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" width="70"/>
+  <img src="https://images.seeklogo.com/logo-png/48/2/linux-logo-png_seeklogo-482333.png" width="70"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg" width="70"/>
+  <img src="https://www.svgrepo.com/show/303548/git-icon-logo.svg" width="70"/>
+  <img src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png" width="70"/>
 </p>
 
 ---
