@@ -4,7 +4,6 @@
   <img src="https://www.42malaga.com/wp-content/uploads/2021/01/42-Malaga-Fundacion-Telefonica.png" alt="42 banner" width="800"/>
 </p>
 <div align="center">
-	<h1>42 Project Badges</h1>
 	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/libft_bonus.webp" width="100" />
 	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/born2beroot.webp" width="100" width="100" />
 	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/ft_printf.webp" width="100" />
@@ -20,11 +19,6 @@
 
 	
 </div>
-
-<p align="center">
-  🚀 Mi viaje en el Common Core de 42  
-  📍 Aprendiendo C, sistemas y resolución de problemas  
-</p>
 
 ---
 
