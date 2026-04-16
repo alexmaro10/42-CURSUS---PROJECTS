@@ -47,7 +47,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 | [minitalk](./6_minitalk)           | Señales UNIX                 | 🟢 100% |
 | [philosophers](./8_Philosophers)   | Concurrencia                 | 🟢 100% |
 | [minishell](./7_minishell)         | Shell UNIX                   | 🟢 100% |
-| [cub3D](./9_cub3D)                  | Juego 3D (Raycasting)        | 🟢 120% |
+| [cub3D](./9_cub3D)                 | Juego 3D (Raycasting)        | 🟢 120% |
 | [CPP](./CPP)                       | Introduccion al lenguaje C++ | 🟡 50%  |
 
 ---
@@ -179,12 +179,10 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ## 📫 Contacto
 
 <p align="center">
-  <a href="https://github.com/<!-- tu usuario -->">GitHub</a> •
-  <a href="https://linkedin.com/in/<!-- tu perfil -->">LinkedIn</a>
-</p>
-
----
-
-<p align="center">
-  ⭐ Si te gusta el repo, ¡dale una estrella!
+    <a href="https://www.linkedin.com/in/alejandro-maldonado-robles-79873730a/">
+        <img src="https://cdn-icons-png.flaticon.com/512/4096/4096186.png" width ="35"/>
+    </a>
+    <a href="mailto:alexmape40@gmail.com">
+        <img src="https://static.vecteezy.com/system/resources/previews/022/613/021/non_2x/google-mail-gmail-icon-logo-symbol-free-png.png" width="40"/>
+    </a>
 </p>
