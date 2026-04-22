@@ -1,0 +1,16 @@
+-Crear un comando JOIN para añadir un usuario a un canal
+-Crear un comando para mandar un mensaje privado de un usuario a otro
+-Modificar la clase User para añadir un atributo que defina si es operador o no
+-Crear un comando KICK para expulsar a un usuario de un canal
+-Crear un comando INVITE para invitar a un usuario a un canal
+-Crear un comando TOPIC para visualizar o cambiar el titulo del canal
+-Crear un comando MODE para cambiar el modo del canal
+	-Opcion i: cambiar el canal a/de modo exclusivo de invitacion
+	-Opcion t: cambiar las restricciones de cambio de titulo del canal para operadores
+	-Opcion k: cambiar/quitar la contraseña del canal
+	-Opcion o: dar/quitar el privilegio de operador del canal
+	-Opcion l: cambiar/quitar el limite de usuarios de un canal
+-Implementar una clase Mensaje para delegar
+ la responsabilidad del parseo de los mensajes recibidos por el servidor
+-Cambiar el formato de los mensajes para decorar el output
+-Ampliar los mensajes de error posibles dependiendo de los comandos nuevos introducidos
