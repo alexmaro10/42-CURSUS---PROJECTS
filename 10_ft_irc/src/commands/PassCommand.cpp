@@ -18,7 +18,7 @@ bool CommandHandler::handlePass(User &user, std::istringstream &iss) const
 		return true;
 	}
 	user.passOk = true;
-	sendRaw(user.fd, ":ft_irc NOTICE AUTH :Password accepted\\r\\n");
+	sendRaw(user.fd, ":ft_irc NOTICE AUTH :Password accepted\r\n");
 	maybeSendWelcome(user);
 	return true;
 }

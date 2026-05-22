@@ -37,3 +37,8 @@ void ChannelManager::removeIfEmpty(const std::string &name)
 	if (it->second.empty())
 		_channels.erase(it);
 }
+
+const std::map<std::string, Channel> &ChannelManager::getChannels() const
+{
+	return _channels;
+}

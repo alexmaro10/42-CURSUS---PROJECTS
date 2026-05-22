@@ -14,7 +14,7 @@ public:
 	const Channel *get(const std::string &name) const;
 	Channel &getOrCreate(const std::string &name);
 	void removeIfEmpty(const std::string &name);
-
+	const std::map<std::string, Channel> &getChannels() const;
 private:
 	std::map<std::string, Channel> _channels;
 };

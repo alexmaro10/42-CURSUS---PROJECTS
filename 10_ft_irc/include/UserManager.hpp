@@ -21,6 +21,9 @@ public:
 
 	bool isNicknameInUse(const std::string &nick, int exceptFd) const;
 
+	User *getUserByNick(const std::string &nick);
+	const User *getUserByNick(const std::string &nick) const;
+
 private:
 	std::map<int, User> _users;
 };

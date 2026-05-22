@@ -1,9 +1,12 @@
+
 #include "Server.hpp"
+#include "Message.hpp"
 
 #include <arpa/inet.h>
 #include <cerrno>
 #include <cstring>
 #include <exception>
+#include <fcntl.h>
 #include <iostream>
 #include <netinet/in.h>
 #include <stdexcept>
@@ -12,7 +15,7 @@
 #include <unistd.h>
 
 Server::Server(int port, const std::string &password)
-	: _port(port), _listenFd(-1), _commands(password)
+	: _port(port), _listenFd(-1), _commands(password, _channels)
 {
 }
 
@@ -80,6 +83,9 @@ void Server::setupSocket()
 	_listenFd = socket(AF_INET, SOCK_STREAM, 6);
 	if (_listenFd < 0)
 		throw std::runtime_error(std::string("socket failed: ") + std::strerror(errno));
+	
+	fcntl(_listenFd, F_SETFL, O_NONBLOCK);
+	
 	int opt = 1;
 	if (setsockopt(_listenFd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0)
 		throw std::runtime_error(std::string("setsockopt failed: ") + std::strerror(errno));
@@ -123,10 +129,13 @@ void Server::acceptClient()
 		}
 		return;
 	}
+	
+	fcntl(fd, F_SETFL, O_NONBLOCK);
+	
 	_users.add(fd, inet_ntoa(addr.sin_addr));
 	User *user = _users.get(fd);
 	std::cout << "[ft_irc] Client connected: fd=" << fd << " ip=" << user->ip << std::endl;
-	const std::string msg = ":ft_irc NOTICE AUTH :Welcome. Authenticate with PASS <password>\\r\\n";
+	const std::string msg = ":ft_irc NOTICE AUTH :Welcome. Authenticate with PASS <password>\r\n";
 	send(fd, msg.c_str(), msg.size(), 0);
 }
 
@@ -134,6 +143,43 @@ void Server::removeClient(int fd, const std::string &reason)
 {
 	if (_users.has(fd))
 	{
+			const std::map<std::string, Channel> &channels = _channels.getChannels();
+			for (std::map<std::string, Channel>::const_iterator it = channels.begin(); it != channels.end();)
+			{
+				std::map<std::string, Channel>::const_iterator next = it;
+				++next;
+				
+				Channel *chan = _channels.get(it->first);
+				if (chan && chan->hasMember(fd)) {
+					bool wasOperator = chan->isOperator(fd);
+					const User* quittingUser = _users.get(fd);
+					std::string partNick = quittingUser ? quittingUser->nickname : "(unknown)";
+					std::string partMsg = ":" + partNick + "!" + partNick + "@ft_irc PART " + chan->name() + " :Quit\r\n";
+					const std::set<int> &members = chan->getMemberFds();
+					for (std::set<int>::const_iterator mit = members.begin(); mit != members.end(); ++mit) {
+						send(*mit, partMsg.c_str(), partMsg.size(), 0);
+					}
+					chan->removeMember(fd);
+					if (!chan->empty() && wasOperator && chan->getOperators().count(fd) == 0) {
+						if (chan->getOperators().empty()) {
+							const std::set<int> &members = chan->getMemberFds();
+							if (!members.empty()) {
+								int newOp = *members.begin();
+								chan->addOperator(newOp);
+								const User* newOpUser = _users.get(newOp);
+								std::string opNick = newOpUser ? newOpUser->nickname : "(unknown)";
+
+								std::string modeMsg = ":ft_irc MODE " + chan->name() + " +o " + opNick + "\r\n";
+								for (std::set<int>::const_iterator mit = members.begin(); mit != members.end(); ++mit) {
+									send(*mit, modeMsg.c_str(), modeMsg.size(), 0);
+								}
+							}
+						}
+					}
+					_channels.removeIfEmpty(it->first);
+				}
+				it = next;
+			}
 		std::cout << "[ft_irc] Client disconnected: fd=" << fd << " (" << reason << ")" << std::endl;
 		close(fd);
 		_users.remove(fd);
@@ -167,8 +213,14 @@ void Server::processLines(User &user)
 		line = CommandHandler::trimCrlf(line);
 		if (line.empty())
 			continue;
+
+		Message msg(line);
+		if (!msg.isValid()) {
+			continue;
+		}
+
 		std::string disconnectReason;
-		if (_commands.handleLine(user, _users, line, disconnectReason))
+		if (_commands.handleLine(user, _users, msg, disconnectReason))
 		{
 			removeClient(user.fd, disconnectReason);
 			return;

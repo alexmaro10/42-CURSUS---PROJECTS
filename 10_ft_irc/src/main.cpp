@@ -6,29 +6,29 @@
 
 namespace
 {
-volatile sig_atomic_t gStopFlag = 0;
+	volatile sig_atomic_t gStopFlag = 0;
 
-void onSignal(int)
-{
-	gStopFlag = 1;
-}
-
-bool parsePort(const std::string &raw, int &port)
-{
-	char *end = NULL;
-	long value = std::strtol(raw.c_str(), &end, 10);
-
-	if (*raw.c_str() == '\0' || *end != '\0')
+	void onSignal(int)
 	{
-		return false;
+		gStopFlag = 1;
 	}
-	if (value < 1024 || value > 65535)
+
+	bool parsePort(const std::string &raw, int &port)
 	{
-		return false;
+		char *end = NULL;
+		long value = std::strtol(raw.c_str(), &end, 10);
+
+		if (*raw.c_str() == '\0' || *end != '\0')
+		{
+			return false;
+		}
+		if (value < 1024 || value > 65535)
+		{
+			return false;
+		}
+		port = static_cast<int>(value);
+		return true;
 	}
-	port = static_cast<int>(value);
-	return true;
-}
 }
 
 int main(int argc, char **argv)

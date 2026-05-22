@@ -62,3 +62,13 @@ bool UserManager::isNicknameInUse(const std::string &nick, int exceptFd) const
 	}
 	return false;
 }
+
+User *UserManager::getUserByNick(const std::string &nick)
+{
+	for (std::map<int, User>::iterator it = _users.begin(); it != _users.end(); ++it)
+	{
+		if (it->second.nickname == nick)
+			return &it->second;
+	}
+	return NULL;
+}

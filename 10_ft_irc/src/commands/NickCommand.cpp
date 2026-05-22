@@ -5,6 +5,11 @@
 
 bool CommandHandler::handleNick(User &user, UserManager &users, std::istringstream &iss) const
 {
+	if (!user.passOk)
+	{
+		sendRaw(user.fd, ErrorReplies::noPass());
+		return true;
+	}
 	std::string nick;
 	iss >> nick;
 	if (nick.empty())
@@ -18,6 +23,7 @@ bool CommandHandler::handleNick(User &user, UserManager &users, std::istringstre
 		return true;
 	}
 	user.nickname = nick;
+	sendNotice(user.fd, user.nickname, "Nickname set to " + user.nickname);
 	maybeSendWelcome(user);
 	return true;
 }
