@@ -16,6 +16,7 @@
 	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/philosophers.webp" width="100" />
 	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/cpp.webp" width="100" />
 	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/cub3d_bonus.webp" width="100" />
+	<img src="https://raw.githubusercontent.com/leogaudin/42_project_badges/refs/heads/main/badges/ft_irc_bonus.webp" width="100" />
 
 	
 </div>
@@ -48,6 +49,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 | [philosophers](./8_Philosophers)   | Concurrencia                 | 🟢 100% |
 | [minishell](./7_minishell)         | Shell UNIX                   | 🟢 100% |
 | [cub3D](./9_cub3D)                 | Juego 3D (Raycasting)        | 🟢 120% |
+| [ft_irc](./10_ft_irc)              | Servidor IRC                 | 🟢 125% |
 | [CPP](./CPP)                       | Introduccion al lenguaje C++ | 🟡 50%  |
 
 ---
