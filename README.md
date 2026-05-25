@@ -50,7 +50,7 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 | [minishell](./7_minishell)         | Shell UNIX                   | 🟢 100% |
 | [cub3D](./9_cub3D)                 | Juego 3D (Raycasting)        | 🟢 120% |
 | [ft_irc](./10_ft_irc)              | Servidor IRC                 | 🟢 125% |
-| [CPP](./CPP)                       | Introduccion al lenguaje C++ | 🟡 50%  |
+| [CPP](./CPP)                       | Introduccion al lenguaje C++ | 🟡 60%  |
 
 ---
 
@@ -132,6 +132,14 @@ Este repositorio es mi **portfolio del Common Core de 42**, donde documento:
 ---
 
 ### 🎮 cub3D
+
+📌 Juego 3D básico
+
+💡 Inputs, raycasting, texturas y gestion de mapas
+
+---
+
+### 🖧 ft_irc
 
 📌 Juego 3D básico
 
