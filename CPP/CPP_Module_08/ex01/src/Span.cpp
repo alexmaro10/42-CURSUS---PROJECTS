@@ -107,10 +107,10 @@ int Span::shortestSpan()
 
 const char* Span::FullContainerException::what() const throw()
 {
-    return "Exception\nContainer is full";
+    return "Exception:\n Container is full";
 }
 
 const char* Span::NotEnoughNumbersException::what() const throw()
 {
-    return "Exception\nNot enough numbers";
+    return "Exception:\n Not enough numbers";
 }
