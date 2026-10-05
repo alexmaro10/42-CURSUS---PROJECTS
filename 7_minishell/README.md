@@ -1,6 +1,6 @@
-# cub3D
+# minishell
 
-Motor gráfico 3D en primera persona hecho con raycasting, inspirado en *Wolfenstein 3D* y desarrollado con la MiniLibX. *(Calificación: 120%)*
+Intérprete de comandos propio inspirado en `bash`, con parseo, ejecución de procesos, redirecciones, pipes y built-ins. *(Calificación: 100%)*
 
 ## 🚀 Demo / Screenshot
 > _Añade aquí una captura de pantalla o GIF del proyecto en ejecución._
@@ -16,68 +16,55 @@ Motor gráfico 3D en primera persona hecho con raycasting, inspirado en *Wolfens
 - [Licencia](#-licencia)
 
 ## ✨ Características
-- Renderizado con raycasting (algoritmo DDA) y texturas distintas según la orientación del muro (N, S, E, O)
-- Colores configurables para suelo y techo
-- Lectura y validación de mapas `.cub` (texturas, colores y mapa cerrado)
-- Movimiento con `W`/`A`/`S`/`D` y rotación con las flechas
-- **Bonus:** extras de jugabilidad y visuales (por ejemplo, colisiones, minimapa, rotación con ratón)
+- Prompt interactivo con historial (`readline`)
+- Ejecución de comandos mediante la variable `PATH` o ruta absoluta/relativa
+- Redirecciones `<`, `>`, `>>` y heredoc `<<`
+- Pipes `|` entre comandos
+- Expansión de variables de entorno y `$?`, y comillas simples y dobles
+- Built-ins: `echo -n`, `cd`, `pwd`, `export`, `unset`, `env`, `exit`
+- Gestión de señales `Ctrl-C`, `Ctrl-D` y `Ctrl-\`
 
 ## 🛠️ Tecnologías
 - C
-- MiniLibX (X11)
-- Matemáticas: vectores, trigonometría y raycasting
+- GNU Readline
+- Llamadas al sistema: `fork`, `execve`, `pipe`, `dup2`, `waitpid`, `signal`
 - Make
 
 ## 📦 Instalación
 
 ```bash
 git clone https://github.com/alexmaro10/42-CURSUS---PROJECTS.git
-cd 42-CURSUS---PROJECTS/9_cub3D
-make        # genera cub3D
-make bonus  # versión con extras
-```
-
-## ⚙️ Configuración
-Formato del archivo `.cub`:
-
-```
-NO ./textures/north.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
-
-F 220,100,0
-C 225,30,0
-
-111111
-100001
-10N001
-111111
+cd 42-CURSUS---PROJECTS/7_minishell
+# Requiere la librería readline (Debian/Ubuntu)
+sudo apt install libreadline-dev
+make        # genera minishell
 ```
 
 ## 💻 Uso
 
 ```bash
-./cub3D maps/mapa.cub
+./minishell
+minishell$ echo "Hola 42" | tr a-z A-Z > salida.txt
+minishell$ cat < salida.txt
+HOLA 42
+minishell$ export NOMBRE=Alex && echo $NOMBRE
+Alex
+minishell$ exit
 ```
-
-Controles: `W A S D` para moverte, `←` `→` para girar y `ESC` para salir.
 
 ## 📁 Estructura del proyecto
 
 ```
-9_cub3D/
+7_minishell/
 ├── Makefile
 ├── includes/
 ├── src/
-│   ├── parsing/    # lectura y validación del .cub
-│   ├── raycasting/
-│   ├── render/
-│   └── hooks/      # teclado y eventos
-├── maps/
-├── textures/
+│   ├── lexer/      # tokenización
+│   ├── parser/     # construcción de comandos
+│   ├── executor/   # procesos, pipes, redirecciones
+│   ├── builtins/
+│   └── signals/
 ├── libft/
-├── minilibx-linux/
 └── README.md
 ```
 
@@ -89,7 +76,7 @@ norminette -R CheckForbiddenSourceHeader
 
 Además de la norma, el proyecto se ha probado manualmente y con testers de la comunidad (por ejemplo, Francinette).
 
-Prueba con mapas inválidos (abiertos, sin jugador, texturas inexistentes, colores fuera de rango) y comprueba que no hay fugas con `valgrind`.
+Compara el comportamiento con `bash` en casos límite: comillas anidadas, redirecciones múltiples, pipes largos, variables inexistentes y comandos no encontrados. Comprueba fugas de memoria con `valgrind` (ignorando las propias de `readline`).
 
 ## 🤝 Contribuir
 Este es un proyecto académico del Common Core de 42, por lo que no se esperan contribuciones directas, pero las sugerencias y revisiones son bienvenidas. Si quieres proponer algo:

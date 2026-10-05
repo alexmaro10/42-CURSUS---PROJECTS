@@ -1,244 +1,98 @@
-*This project has been created as part of the 42 curriculum by almaldon, bvarea-k, ancanale.*
-
 # ft_irc
 
-## Description
+Servidor IRC escrito en C++98 que permite a varios clientes IRC reales conectarse, unirse a canales y chatear con autenticación por contraseña. *(Calificación: 125%)*
 
-**ft_irc** is a custom implementation of an **IRC (Internet Relay Chat) server** written in C++98 as part of the 42 School curriculum.
+## 🚀 Demo / Screenshot
+> _Añade aquí una captura de pantalla o GIF del proyecto en ejecución._
 
-The goal of this project is to understand and reproduce the core functionality of the IRC protocol by developing a fully functional server capable of handling multiple simultaneous clients, channels, authentication, and message exchange.
+## 📋 Tabla de contenidos
+- [Características](#-características)
+- [Tecnologías](#️-tecnologías)
+- [Instalación](#-instalación)
+- [Uso](#-uso)
+- [Estructura del proyecto](#-estructura-del-proyecto)
+- [Tests](#-tests)
+- [Contribuir](#-contribuir)
+- [Licencia](#-licencia)
 
-The server communicates using the IRC protocol and can be used with standard IRC clients such as HexChat, WeeChat, irssi, or any client compatible with RFC 1459 / RFC 2812. Through this project, we explored network programming concepts including socket management, multiplexing, client-server architecture, protocol parsing, and concurrent connection handling.
+## ✨ Características
+- Servidor TCP no bloqueante que gestiona múltiples clientes con un único `poll()` (o equivalente)
+- Autenticación con contraseña y registro de usuarios (`PASS`, `NICK`, `USER`)
+- Canales y mensajes privados (`JOIN`, `PART`, `PRIVMSG`, `QUIT`)
+- Comandos de operador: `KICK`, `INVITE`, `TOPIC` y `MODE` (`i`, `t`, `k`, `o`, `l`)
+- Compatible con clientes IRC de referencia
+- **Bonus:** funcionalidades extra (por ejemplo, un bot y/o transferencia de archivos)
 
-### Main Features
+## 🛠️ Tecnologías
+- C++98
+- Sockets POSIX (`socket`, `bind`, `listen`, `accept`, `recv`, `send`)
+- `poll()` / I/O no bloqueante
+- Make
 
-- TCP server using non-blocking sockets
-- Multiple client connections
-- Password-protected server access
-- Nickname and username registration
-- Channel creation and management
-- Public and private messaging
-- Channel operators
-- Support for common IRC commands:
-  - PASS
-  - NICK
-  - USER
-  - JOIN
-  - PRIVMSG
-  - KICK
-  - INVITE
-  - TOPIC
-  - MODE
-  - QUIT
-- Channel modes:
-  - `i` — invite-only
-  - `t` — topic restricted to operators
-  - `k` — channel password
-  - `o` — operator privileges
-  - `l` — user limit
+## 📦 Instalación
 
----
+```bash
+git clone https://github.com/alexmaro10/42-CURSUS---PROJECTS.git
+cd 42-CURSUS---PROJECTS/10_ft_irc
+make        # genera ircserv
+make bonus  # si aplica
+```
 
-## Project Structure
+## 💻 Uso
 
-```text
-ft_irc/
-├── bonus/
-├── include/        # Header files
-├── src/            # Source files
+Arranca el servidor indicando puerto y contraseña:
+
+```bash
+./ircserv <puerto> <contraseña>
+./ircserv 6667 mipass
+```
+
+Conéctate con un cliente IRC (por ejemplo, HexChat/irssi) o con `nc`:
+
+```bash
+nc -C 127.0.0.1 6667
+PASS mipass
+NICK alex
+USER alex 0 * :Alejandro
+JOIN #42
+PRIVMSG #42 :Hola a todos
+```
+
+## 📁 Estructura del proyecto
+
+```
+10_ft_irc/
 ├── Makefile
+├── includes/
+├── src/
+│   ├── Server.cpp
+│   ├── Client.cpp
+│   ├── Channel.cpp
+│   └── commands/   # un archivo por comando
+├── bonus/
 └── README.md
 ```
 
----
-
-## Instructions
-
-### Requirements
-
-- Linux or macOS
-- C++ compiler supporting the C++98 standard
-- Make
-
-### Compilation
-
-Clone the repository and compile the project:
+## 🧪 Tests
 
 ```bash
-git clone <repository_url>
-cd ft_irc
-make
+make && ./ircserv 6667 mipass
 ```
 
-This will generate the executable:
+Pruebas recomendadas: conexión de varios clientes, mensajes fragmentados con `nc` (`Ctrl+D` para enviar en partes), desconexiones abruptas y comandos de operador con distintos modos de canal.
 
-```bash
-./ircserv
-```
+## 🤝 Contribuir
+Este es un proyecto académico del Common Core de 42, por lo que no se esperan contribuciones directas, pero las sugerencias y revisiones son bienvenidas. Si quieres proponer algo:
+1. Haz fork del repositorio
+2. Crea tu rama (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
 
-### Launching the Server
+> ⚠️ Si eres estudiante de 42, úsalo solo como referencia: copiar código va contra las normas de la escuela.
 
-The server requires two arguments:
+## 📄 Licencia
+Proyecto académico realizado en 42 Málaga con fines educativos.
 
-```bash
-./ircserv <port> <password>
-```
-
-Example:
-
-```bash
-./ircserv 6667 mypassword
-```
-
-Where:
-
-- `port` is the listening TCP port.
-- `password` is the server password required by clients.
-
-### Connecting with an IRC Client
-
-Example using HexChat:
-
-1. Open HexChat.
-2. Create a new network.
-3. Set:
-   - Host: `localhost`
-   - Port: `6667`
-   - Password: `mypassword`
-4. Connect.
-5. Join a channel:
-
-```text
-/join #42
-```
-
-### Useful IRC Commands
-
-Register:
-
-```text
-PASS mypassword
-NICK nickname
-USER username 0 * :Real Name
-```
-
-Join a channel:
-
-```text
-JOIN #channel
-```
-
-Send a message:
-
-```text
-PRIVMSG #channel :Hello everyone!
-```
-
-Send a private message:
-
-```text
-PRIVMSG nickname :Hello!
-```
-
-Become familiar with channel administration:
-
-```text
-KICK
-INVITE
-TOPIC
-MODE
-```
-
----
-
-## Technical Choices
-
-### Network Model
-
-The server uses:
-
-- TCP sockets for reliable communication.
-- Non-blocking I/O.
-- Multiplexing through `poll()` to handle multiple clients simultaneously without spawning a thread per connection.
-
-### Architecture
-
-The project is organized around several core components:
-
-- **Server**: manages sockets and event polling.
-- **Client**: stores user state and connection data.
-- **Channel**: manages channel membership, permissions, and channel-specific modes.
-- **Command Parser**: interprets IRC messages and dispatches commands.
-- **Command Handlers**: implement protocol-specific behavior.
-
-### Compliance
-
-The implementation follows the project specifications and reproduces the behavior expected from a standard IRC server while remaining compatible with common IRC clients.
-
----
-
-## Learning Outcomes
-
-Through this project we gained practical experience in:
-
-- Socket programming
-- Network protocols
-- Event-driven architectures
-- IRC protocol design
-- Parsing and command processing
-- Object-Oriented Programming in C++98
-- Resource management and error handling
-- Collaborative software development using Git
-
----
-
-## Resources
-
-### IRC Documentation
-
-- RFC 1459 — Internet Relay Chat Protocol
-  - https://datatracker.ietf.org/doc/html/rfc1459
-
-- RFC 2812 — Internet Relay Chat: Client Protocol
-  - https://datatracker.ietf.org/doc/html/rfc2812
-
-- RFC 2810 — IRC Architecture
-  - https://datatracker.ietf.org/doc/html/rfc2810
-
-### Socket Programming
-
-- Beej's Guide to Network Programming
-  - https://beej.us/guide/bgnet/
-
-- Linux `poll()` documentation
-  - https://man7.org/linux/man-pages/man2/poll.2.html
-
-- Linux socket API documentation
-  - https://man7.org/linux/man-pages/man7/socket.7.html
-
-### IRC Clients
-
-- HexChat
-  - https://hexchat.github.io/
-
-### C++ References
-
-- C++98 Reference
-  - https://en.cppreference.com/
-
-- ISO C++ FAQ
-  - https://isocpp.org/faq
-
-### AI Usage
-
-Artificial Intelligence tools (ChatGPT) were used exclusively as learning and documentation assistants during the development of the project.
-
-AI assistance included:
-
-- Clarification of IRC protocol concepts and RFC interpretation.
-- Explanations of socket programming concepts.
-- Assistance in understanding `poll()` behavior and event-driven architectures.
-- Code review suggestions and debugging guidance.
-- README drafting and documentation improvements.
-
-All architectural decisions, implementation, testing, debugging, and final code were designed, developed, reviewed, and validated by the project authors.
+## 👤 Autor
+Alejandro Maldonado Robles - [@alexmaro10](https://github.com/alexmaro10)

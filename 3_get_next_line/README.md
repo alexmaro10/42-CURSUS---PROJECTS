@@ -1,43 +1,106 @@
 # get_next_line
 
-## Overview
+Función que lee un file descriptor y devuelve una línea cada vez que se llama, gestionando buffers y memoria de forma eficiente. *(Calificación: 103%)*
 
-get_next_line is a function that reads a line from a file descriptor, one line at a time, until the end of the file or an error occurs. It is part of the 42 curriculum and emphasizes efficient reading with buffering, handling multiple file descriptors, and proper memory management. The function returns 1 if a line is read, 0 on EOF, and -1 on error.
+## 🚀 Demo / Screenshot
+> _Añade aquí una captura de pantalla o GIF del proyecto en ejecución._
 
-The project consists of the main function in `get_next_line.c`, utility functions in `get_next_line_utils.c`, and a header file `get_next_line.h`.
+## 📋 Tabla de contenidos
+- [Características](#-características)
+- [Tecnologías](#️-tecnologías)
+- [Instalación](#-instalación)
+- [Uso](#-uso)
+- [Estructura del proyecto](#-estructura-del-proyecto)
+- [Tests](#-tests)
+- [Contribuir](#-contribuir)
+- [Licencia](#-licencia)
 
-## Memory Management
+## ✨ Características
+- Lectura línea a línea desde cualquier file descriptor (archivos, `stdin`...)
+- Tamaño de buffer configurable en compilación con `BUFFER_SIZE`
+- **Bonus:** gestión de varios file descriptors a la vez con una sola variable estática
+- Gestión correcta de memoria: sin fugas y con liberación de restos
 
-Memory in get_next_line is managed carefully to avoid leaks and ensure efficiency:
+## 🛠️ Tecnologías
+- C
+- `read`, `malloc`, `free`
+- Variables estáticas
 
-- **Buffer Allocation**: A static buffer of size `BUFFER_SIZE` (defined in the header or as a macro) is used to read chunks from the file descriptor. This buffer is reused across calls.
-- **Line Allocation**: The `line` parameter is dynamically allocated using `malloc` to store the extracted line, including the newline character if present. The caller is responsible for freeing this memory.
-- **Static Storage**: A static variable holds the remaining unread data from the buffer, preventing data loss between function calls.
-- **Cleanup**: On EOF or error, any remaining static data is freed. Utility functions like `ft_strjoin` and `ft_substr` handle string operations with proper allocation.
-- **Edge Cases**: Handles NULL inputs, invalid file descriptors, and ensures no memory leaks by freeing temporary strings.
+## 📦 Instalación
 
-## Static Variables
+```bash
+git clone https://github.com/alexmaro10/42-CURSUS---PROJECTS.git
+cd 42-CURSUS---PROJECTS/3_get_next_line
+# No requiere instalación; se compila junto a tu programa
+```
 
-Static variables in C retain their value between function calls and are initialized only once. In get_next_line:
+## ⚙️ Configuración
+El tamaño de lectura se define al compilar:
 
-- A static `char *` (often called `stash` or `remainder`) stores the leftover buffer content after extracting a line. This allows the function to resume reading from where it left off in subsequent calls.
-- For multiple file descriptors, an array of static pointers or a more advanced structure (like a linked list) can be used to maintain separate states per fd.
-- Benefits: Enables reading large files without loading everything into memory at once, and supports reading from multiple fds concurrently without interference.
+```bash
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 ...
+```
 
-## Functions
+## 💻 Uso
 
-### Main Function
+```c
+#include "get_next_line.h"
+#include <fcntl.h>
 
-| Function | Description |
-|----------|-------------|
-| `get_next_line(int fd, char **line)` | Reads the next line from the file descriptor into `line`. Returns 1 on success, 0 on EOF, -1 on error. |
+int main(void)
+{
+    int   fd = open("archivo.txt", O_RDONLY);
+    char *line;
 
-### Utility Functions
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
+    close(fd);
+    return (0);
+}
+```
 
-| Function | Description |
-|----------|-------------|
-| `ft_strjoin(char const *s1, char const *s2)` | Concatenates two strings into a new allocated string. |
-| `ft_strchr(const char *s, int c)` | Finds the first occurrence of a character in a string. |
-| `ft_strlen(const char *s)` | Returns the length of a string. |
-| `ft_substr(char const *s, unsigned int start, size_t len)` | Extracts a substring from a string. |
-| `ft_strdup(const char *s1)` | Duplicates a string. |
+```bash
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_utils.c -o gnl && ./gnl
+```
+
+## 📁 Estructura del proyecto
+
+```
+3_get_next_line/
+├── get_next_line.c
+├── get_next_line_utils.c
+├── get_next_line.h
+├── get_next_line_bonus.c
+├── get_next_line_utils_bonus.c
+├── get_next_line_bonus.h
+└── README.md
+```
+
+## 🧪 Tests
+
+```bash
+norminette -R CheckForbiddenSourceHeader
+```
+
+Además de la norma, el proyecto se ha probado manualmente y con testers de la comunidad (por ejemplo, Francinette).
+
+Prueba con distintos `BUFFER_SIZE` (1, 42, 9999, 10000000), archivos vacíos, sin salto de línea final y lectura desde `stdin`.
+
+## 🤝 Contribuir
+Este es un proyecto académico del Common Core de 42, por lo que no se esperan contribuciones directas, pero las sugerencias y revisiones son bienvenidas. Si quieres proponer algo:
+1. Haz fork del repositorio
+2. Crea tu rama (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
+
+> ⚠️ Si eres estudiante de 42, úsalo solo como referencia: copiar código va contra las normas de la escuela.
+
+## 📄 Licencia
+Proyecto académico realizado en 42 Málaga con fines educativos.
+
+## 👤 Autor
+Alejandro Maldonado Robles - [@alexmaro10](https://github.com/alexmaro10)

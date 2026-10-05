@@ -1,6 +1,6 @@
-# cub3D
+# so_long
 
-Motor gráfico 3D en primera persona hecho con raycasting, inspirado en *Wolfenstein 3D* y desarrollado con la MiniLibX. *(Calificación: 120%)*
+Pequeño juego 2D en vista cenital hecho con la MiniLibX: el jugador recoge todos los coleccionables del mapa y llega a la salida. *(Calificación: 125%)*
 
 ## 🚀 Demo / Screenshot
 > _Añade aquí una captura de pantalla o GIF del proyecto en ejecución._
@@ -16,67 +16,53 @@ Motor gráfico 3D en primera persona hecho con raycasting, inspirado en *Wolfens
 - [Licencia](#-licencia)
 
 ## ✨ Características
-- Renderizado con raycasting (algoritmo DDA) y texturas distintas según la orientación del muro (N, S, E, O)
-- Colores configurables para suelo y techo
-- Lectura y validación de mapas `.cub` (texturas, colores y mapa cerrado)
-- Movimiento con `W`/`A`/`S`/`D` y rotación con las flechas
-- **Bonus:** extras de jugabilidad y visuales (por ejemplo, colisiones, minimapa, rotación con ratón)
+- Carga de mapas desde archivos `.ber` con validación (rectangular, rodeado de muros, camino válido)
+- Elementos del mapa: `0` suelo, `1` muro, `C` coleccionable, `E` salida, `P` jugador
+- Movimiento con `W`/`A`/`S`/`D` (o flechas) y cierre con `ESC` o la cruz de la ventana
+- Contador de movimientos
+- **Bonus:** elementos extra como enemigos y animaciones de sprites
 
 ## 🛠️ Tecnologías
 - C
-- MiniLibX (X11)
-- Matemáticas: vectores, trigonometría y raycasting
+- MiniLibX (X11 / XQuartz)
+- Flood fill para comprobar que el mapa es resoluble
 - Make
 
 ## 📦 Instalación
 
 ```bash
 git clone https://github.com/alexmaro10/42-CURSUS---PROJECTS.git
-cd 42-CURSUS---PROJECTS/9_cub3D
-make        # genera cub3D
-make bonus  # versión con extras
+cd 42-CURSUS---PROJECTS/5_so_long
+make        # genera so_long
+make bonus  # versión con los extras
 ```
 
 ## ⚙️ Configuración
-Formato del archivo `.cub`:
+Formato de mapa (`.ber`):
 
 ```
-NO ./textures/north.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
-
-F 220,100,0
-C 225,30,0
-
-111111
-100001
-10N001
-111111
+1111111111
+1P0C0000C1
+1000011001
+1C00000E01
+1111111111
 ```
 
 ## 💻 Uso
 
 ```bash
-./cub3D maps/mapa.cub
+./so_long maps/mapa.ber
 ```
-
-Controles: `W A S D` para moverte, `←` `→` para girar y `ESC` para salir.
 
 ## 📁 Estructura del proyecto
 
 ```
-9_cub3D/
+5_so_long/
 ├── Makefile
 ├── includes/
 ├── src/
-│   ├── parsing/    # lectura y validación del .cub
-│   ├── raycasting/
-│   ├── render/
-│   └── hooks/      # teclado y eventos
-├── maps/
-├── textures/
-├── libft/
+├── maps/           # mapas .ber de ejemplo
+├── textures/       # sprites
 ├── minilibx-linux/
 └── README.md
 ```
@@ -89,7 +75,7 @@ norminette -R CheckForbiddenSourceHeader
 
 Además de la norma, el proyecto se ha probado manualmente y con testers de la comunidad (por ejemplo, Francinette).
 
-Prueba con mapas inválidos (abiertos, sin jugador, texturas inexistentes, colores fuera de rango) y comprueba que no hay fugas con `valgrind`.
+Prueba con mapas inválidos (sin salida, sin camino, no rectangular, extensión incorrecta) para comprobar que el programa muestra `Error` y sale limpiamente.
 
 ## 🤝 Contribuir
 Este es un proyecto académico del Common Core de 42, por lo que no se esperan contribuciones directas, pero las sugerencias y revisiones son bienvenidas. Si quieres proponer algo:

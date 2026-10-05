@@ -1,6 +1,6 @@
-# cub3D
+# Philosophers
 
-Motor gráfico 3D en primera persona hecho con raycasting, inspirado en *Wolfenstein 3D* y desarrollado con la MiniLibX. *(Calificación: 120%)*
+Resolución del clásico problema de los filósofos comensales con hilos y mutexes, evitando deadlocks y condiciones de carrera. *(Calificación: 100%)*
 
 ## 🚀 Demo / Screenshot
 > _Añade aquí una captura de pantalla o GIF del proyecto en ejecución._
@@ -16,68 +16,53 @@ Motor gráfico 3D en primera persona hecho con raycasting, inspirado en *Wolfens
 - [Licencia](#-licencia)
 
 ## ✨ Características
-- Renderizado con raycasting (algoritmo DDA) y texturas distintas según la orientación del muro (N, S, E, O)
-- Colores configurables para suelo y techo
-- Lectura y validación de mapas `.cub` (texturas, colores y mapa cerrado)
-- Movimiento con `W`/`A`/`S`/`D` y rotación con las flechas
-- **Bonus:** extras de jugabilidad y visuales (por ejemplo, colisiones, minimapa, rotación con ratón)
+- Un hilo por filósofo; cada tenedor protegido por un mutex
+- Parámetros configurables: número de filósofos, tiempos de muerte, comer y dormir, y número opcional de comidas
+- Detección de muerte de un filósofo con precisión de milisegundos
+- Salida del log sin mezclarse entre hilos
+- Sin data races (verificable con `helgrind`/`ThreadSanitizer`)
 
 ## 🛠️ Tecnologías
 - C
-- MiniLibX (X11)
-- Matemáticas: vectores, trigonometría y raycasting
+- POSIX threads (`pthread_create`, `pthread_mutex_*`)
+- `gettimeofday` / `usleep`
 - Make
 
 ## 📦 Instalación
 
 ```bash
 git clone https://github.com/alexmaro10/42-CURSUS---PROJECTS.git
-cd 42-CURSUS---PROJECTS/9_cub3D
-make        # genera cub3D
-make bonus  # versión con extras
-```
-
-## ⚙️ Configuración
-Formato del archivo `.cub`:
-
-```
-NO ./textures/north.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
-
-F 220,100,0
-C 225,30,0
-
-111111
-100001
-10N001
-111111
+cd 42-CURSUS---PROJECTS/8_Philosophers
+make        # genera philo
 ```
 
 ## 💻 Uso
 
 ```bash
-./cub3D maps/mapa.cub
+./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
 ```
 
-Controles: `W A S D` para moverte, `←` `→` para girar y `ESC` para salir.
+Ejemplos:
+
+```bash
+./philo 5 800 200 200       # nadie debería morir
+./philo 4 310 200 100       # un filósofo muere
+./philo 5 800 200 200 7     # termina al comer 7 veces cada uno
+```
+
+Formato de salida: `timestamp_ms id acción`.
 
 ## 📁 Estructura del proyecto
 
 ```
-9_cub3D/
+8_Philosophers/
 ├── Makefile
-├── includes/
-├── src/
-│   ├── parsing/    # lectura y validación del .cub
-│   ├── raycasting/
-│   ├── render/
-│   └── hooks/      # teclado y eventos
-├── maps/
-├── textures/
-├── libft/
-├── minilibx-linux/
+├── philo.h
+├── main.c
+├── init.c          # inicialización de hilos y mutexes
+├── routine.c       # ciclo comer / dormir / pensar
+├── monitor.c       # control de muerte
+├── utils.c
 └── README.md
 ```
 
@@ -89,7 +74,11 @@ norminette -R CheckForbiddenSourceHeader
 
 Además de la norma, el proyecto se ha probado manualmente y con testers de la comunidad (por ejemplo, Francinette).
 
-Prueba con mapas inválidos (abiertos, sin jugador, texturas inexistentes, colores fuera de rango) y comprueba que no hay fugas con `valgrind`.
+```bash
+valgrind --tool=helgrind ./philo 5 800 200 200
+```
+
+Prueba con 1 filósofo, con 200 filósofos y con tiempos justos de supervivencia.
 
 ## 🤝 Contribuir
 Este es un proyecto académico del Common Core de 42, por lo que no se esperan contribuciones directas, pero las sugerencias y revisiones son bienvenidas. Si quieres proponer algo:

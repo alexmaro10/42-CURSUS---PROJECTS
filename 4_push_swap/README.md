@@ -1,39 +1,89 @@
 # push_swap
 
-## Overview
+Programa que ordena una pila de enteros usando una segunda pila y un conjunto limitado de operaciones, buscando el menor número de movimientos posible. *(Calificación: 100%)*
 
-Push_swap es un ejercicio enfocado en el aprendizaje de algoritmos y optimización.
+## 🚀 Demo / Screenshot
+> _Añade aquí una captura de pantalla o GIF del proyecto en ejecución._
 
-Consiste ordenar una lista de números enteros utilizando dos pilas (stack A y stack B) y un conjunto muy limitado de operaciones predefinidas (como sa, pb, ra, etc.). El objetivo no es solo ordenar, sino hacerlo con el menor número de movimientos posible.
+## 📋 Tabla de contenidos
+- [Características](#-características)
+- [Tecnologías](#️-tecnologías)
+- [Instalación](#-instalación)
+- [Uso](#-uso)
+- [Estructura del proyecto](#-estructura-del-proyecto)
+- [Tests](#-tests)
+- [Contribuir](#-contribuir)
+- [Licencia](#-licencia)
 
-## Conceptos clave
+## ✨ Características
+- Ordena pilas con las operaciones `sa`, `sb`, `ss`, `pa`, `pb`, `ra`, `rb`, `rr`, `rra`, `rrb`, `rrr`
+- Algoritmos distintos según el tamaño de la entrada (casos pequeños y pilas grandes)
+- Validación de argumentos: duplicados, no numéricos y desbordamiento de `int`
+- Optimización del número de movimientos
 
-se utilizan estructuras de datos tipo pila (stack), que siguen el principio LIFO (Last In, First Out). El programa trabaja con dos pilas, A y B, y todas las operaciones permitidas consisten en manipular estos elementos: intercambiar los dos primeros, mover elementos de una pila a otra o rotar la pila hacia arriba o hacia abajo. Implementar correctamente estas estructuras, ya sea mediante arrays o listas enlazadas, es fundamental para asegurar eficiencia y buen manejo de memoria.
+## 🛠️ Tecnologías
+- C
+- Estructuras de datos (listas enlazadas / pilas)
+- Complejidad algorítmica
+- Make
 
-Por otro lado, la algoritmia es el núcleo del proyecto. No basta con aplicar un algoritmo de ordenación tradicional, sino que hay que adaptarlo a las limitaciones impuestas por las operaciones disponibles. Por ejemplo, muchos estudiantes utilizan variantes de Radix Sort para listas grandes, mientras que para conjuntos pequeños se diseñan soluciones específicas más directas. La clave está en encontrar una estrategia que no solo funcione, sino que minimice el número de pasos necesarios.
+## 📦 Instalación
 
-Ligado a esto aparece la optimización, que es probablemente el aspecto más importante. Push_swap no evalúa únicamente si el resultado está ordenado, sino cuántas operaciones se han utilizado para conseguirlo. Esto obliga a pensar de forma estratégica, evitando movimientos innecesarios y combinando operaciones cuando es posible, con el objetivo de reducir al máximo la cantidad total de instrucciones.
+```bash
+git clone https://github.com/alexmaro10/42-CURSUS---PROJECTS.git
+cd 42-CURSUS---PROJECTS/4_push_swap
+make        # genera el ejecutable push_swap
+```
 
-Finalmente, el parsing o validación de entrada juega un papel esencial. Antes de comenzar cualquier proceso de ordenación, el programa debe verificar que los datos recibidos son correctos: comprobar que todos los valores son enteros válidos, que no hay duplicados y que no se producen errores de rango. Una gestión rigurosa de estos casos garantiza la robustez del programa y evita comportamientos inesperados.
+## 💻 Uso
 
-En conjunto, Push_swap es un proyecto que combina estructuras de datos, diseño de algoritmos, optimización y validación, convirtiéndose en un excelente ejercicio para desarrollar pensamiento lógico y habilidades avanzadas en programación en C.
+```bash
+./push_swap 2 1 3 6 5 8
+```
 
-## Algoritmo Seleccionado
+Imprime en `stdout` la lista de operaciones. Para contarlas:
 
-El algoritmo de chunks funciona de la siguiente manera:
+```bash
+ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+```
 
-En una primera fase, los elementos de la pila A se recorren y se envían progresivamente a la pila B. Para ello, se selecciona un bloque concreto y se comprueba si cada número pertenece a ese rango. Si es así, se empuja a la pila B mediante la operación correspondiente; si no, se rota la pila A para seguir buscando. Durante este proceso, es común aplicar pequeñas optimizaciones, como rotar la pila B después de insertar ciertos elementos, con el objetivo de mantener una organización parcial que facilite los pasos posteriores.
+Si hay error (duplicados, valores no válidos) escribe `Error` en `stderr`.
 
-Una vez que todos los elementos han sido trasladados a la pila B, comienza la segunda fase del algoritmo. En este punto, se reconstruye la pila A en orden, devolviendo los elementos desde B. Para ello, se busca repetidamente el número más grande en la pila B, se realizan las rotaciones necesarias para colocarlo en la parte superior y se vuelve a insertar en la pila A. Al repetir este proceso, los elementos se van colocando en su posición correcta hasta que la pila queda completamente ordenada.
+## 📁 Estructura del proyecto
 
-Este enfoque resulta eficaz porque reduce la complejidad del problema al dividirlo en subconjuntos manejables y permite un mayor control sobre los movimientos realizados. Además, al organizar parcialmente los elementos en la pila B, se disminuye el número de operaciones necesarias en la fase final.
+```
+4_push_swap/
+├── Makefile
+├── push_swap.h
+├── main.c
+├── operations/     # sa, pb, ra, rra...
+├── algorithms/     # ordenación por tamaño
+├── utils/          # parseo y validación
+└── README.md
+```
 
-## Resultados
+## 🧪 Tests
 
-Como se ve en las imagenes este algoritmo nos permite ordenar listas muy grandes de numero en pocos movimientos:
+```bash
+norminette -R CheckForbiddenSourceHeader
+```
 
-10 numeros: 24 - 36 movimientos.
+Además de la norma, el proyecto se ha probado manualmente y con testers de la comunidad (por ejemplo, Francinette).
 
-100 numeros: 644 movimientos.
+Prueba con 3, 5, 100 y 500 números aleatorios y verifica el número de movimientos con la escala de evaluación (por ejemplo, 100 números en menos de ~700 movimientos).
 
-500 numeros: < 5900 movimientos
+## 🤝 Contribuir
+Este es un proyecto académico del Common Core de 42, por lo que no se esperan contribuciones directas, pero las sugerencias y revisiones son bienvenidas. Si quieres proponer algo:
+1. Haz fork del repositorio
+2. Crea tu rama (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
+
+> ⚠️ Si eres estudiante de 42, úsalo solo como referencia: copiar código va contra las normas de la escuela.
+
+## 📄 Licencia
+Proyecto académico realizado en 42 Málaga con fines educativos.
+
+## 👤 Autor
+Alejandro Maldonado Robles - [@alexmaro10](https://github.com/alexmaro10)

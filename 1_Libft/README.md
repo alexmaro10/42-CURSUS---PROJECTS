@@ -1,89 +1,93 @@
 # Libft
 
-## Overview
+Recreación de las funciones estándar de C (`libc`) más utilidades adicionales y listas enlazadas, empaquetadas en la librería estática `libft.a`. Es la base que reutilizan el resto de proyectos del Common Core. *(Calificación: 125%)*
 
-Libft is a custom C library project from the 42 curriculum, designed to reimplement essential functions from the standard C library (libc). It serves as a foundational library for future projects, providing a set of utility functions for string manipulation, memory operations, character checks, and more. The library includes mandatory functions, additional utilities, and bonus linked list functions. All functions are prefixed with `ft_` to avoid conflicts with standard library functions.
+## 🚀 Demo / Screenshot
+> _Añade aquí una captura de pantalla o GIF del proyecto en ejecución._
 
-The library is compiled into a static archive (`libft.a`) using the provided Makefile, which supports compilation, cleaning, and recompilation.
+## 📋 Tabla de contenidos
+- [Características](#-características)
+- [Tecnologías](#️-tecnologías)
+- [Instalación](#-instalación)
+- [Uso](#-uso)
+- [Estructura del proyecto](#-estructura-del-proyecto)
+- [Tests](#-tests)
+- [Contribuir](#-contribuir)
+- [Licencia](#-licencia)
 
-## Functions
+## ✨ Características
+- Reimplementación de funciones de `<ctype.h>`, `<string.h>`, `<stdlib.h>` (`ft_isalpha`, `ft_strlen`, `ft_memcpy`, `ft_atoi`, `ft_calloc`, `ft_strdup`...)
+- Funciones adicionales: `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_itoa`, `ft_strmapi`, `ft_striteri` y `ft_putchar_fd`/`ft_putstr_fd`/`ft_putendl_fd`/`ft_putnbr_fd`
+- **Bonus:** manejo de listas enlazadas (`ft_lstnew`, `ft_lstadd_front`, `ft_lstadd_back`, `ft_lstsize`, `ft_lstlast`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`)
+- Gestión de memoria sin fugas y compilación con `-Wall -Wextra -Werror`
 
-### Mandatory Functions
+## 🛠️ Tecnologías
+- C (estándar C99, norma de 42)
+- Make / `ar` para generar la librería estática
+- Norminette
 
-#### Character Checks
+## 📦 Instalación
 
-| Function | Description |
-|----------|-------------|
-| `ft_isalpha(int c)` | Checks if the character is an alphabetic letter (a-z, A-Z). |
-| `ft_isdigit(int c)` | Checks if the character is a digit (0-9). |
-| `ft_isalnum(int c)` | Checks if the character is alphanumeric (letter or digit). |
-| `ft_isascii(int c)` | Checks if the character is a valid ASCII character (0-127). |
-| `ft_isprint(int c)` | Checks if the character is printable (including space, 32-126). |
+```bash
+git clone https://github.com/alexmaro10/42-CURSUS---PROJECTS.git
+cd 42-CURSUS---PROJECTS/1_Libft
+make        # genera libft.a
+make bonus  # incluye las funciones de listas
+```
 
-#### String Operations
+## 💻 Uso
 
-| Function | Description |
-|----------|-------------|
-| `ft_strlen(const char *s)` | Returns the length of the string. |
-| `ft_strlcpy(char *dst, const char *src, size_t dstsize)` | Copies a string to a destination buffer with size limit, ensuring null-termination. |
-| `ft_strlcat(char *dst, const char *src, size_t dstsize)` | Concatenates a string to the end of another with size limit. |
-| `ft_strchr(const char *s, int c)` | Locates the first occurrence of a character in a string. |
-| `ft_strrchr(const char *s, int c)` | Locates the last occurrence of a character in a string. |
-| `ft_strncmp(const char *s1, const char *s2, size_t n)` | Compares two strings up to n characters. |
-| `ft_strnstr(const char *haystack, const char *needle, size_t len)` | Locates a substring within a string, limited by length. |
-| `ft_strdup(const char *s1)` | Duplicates a string, allocating memory for the copy. |
-| `ft_substr(char const *s, unsigned int start, size_t len)` | Extracts a substring from a string starting at an index with a given length. |
-| `ft_strjoin(char const *s1, char const *s2)` | Concatenates two strings into a new string. |
-| `ft_strtrim(char const *s1, char const *set)` | Trims characters from the beginning and end of a string based on a set. |
-| `ft_split(char const *s, char c)` | Splits a string into an array of substrings based on a delimiter. |
-| `ft_strmapi(char const *s, char (*f)(unsigned int, char))` | Applies a function to each character of a string, creating a new string. |
-| `ft_striteri(char *s, void (*f)(unsigned int, char*))` | Applies a function to each character of a string in place. |
+Incluye el header y enlaza la librería en tu proyecto:
 
-#### Memory Operations
+```c
+#include "libft.h"
 
-| Function | Description |
-|----------|-------------|
-| `ft_memset(void *b, int c, size_t len)` | Fills a block of memory with a specified value. |
-| `ft_bzero(void *s, size_t n)` | Sets a block of memory to zero. |
-| `ft_memcpy(void *dst, const void *src, size_t n)` | Copies a block of memory from source to destination. |
-| `ft_memmove(void *dst, const void *src, size_t len)` | Moves a block of memory, handling overlapping regions. |
-| `ft_memchr(const void *s, int c, size_t n)` | Searches for a character in a block of memory. |
-| `ft_memcmp(const void *s1, const void *s2, size_t n)` | Compares two blocks of memory. |
+int main(void)
+{
+    char *s = ft_strjoin("Hola, ", "42!");
+    ft_putendl_fd(s, 1);
+    free(s);
+    return (0);
+}
+```
 
-#### Conversion
+```bash
+cc -Wall -Wextra -Werror main.c -L. -lft -o demo && ./demo
+```
 
-| Function | Description |
-|----------|-------------|
-| `ft_atoi(const char *str)` | Converts a string to an integer. |
-| `ft_itoa(int n)` | Converts an integer to a string. |
-| `ft_tolower(int c)` | Converts a character to lowercase. |
-| `ft_toupper(int c)` | Converts a character to uppercase. |
+Otras reglas del `Makefile`: `make clean`, `make fclean`, `make re`.
 
-#### Output
+## 📁 Estructura del proyecto
 
-| Function | Description |
-|----------|-------------|
-| `ft_putchar_fd(char c, int fd)` | Writes a character to a file descriptor. |
-| `ft_putstr_fd(char *s, int fd)` | Writes a string to a file descriptor. |
-| `ft_putendl_fd(char *s, int fd)` | Writes a string followed by a newline to a file descriptor. |
-| `ft_putnbr_fd(int n, int fd)` | Writes an integer to a file descriptor. |
+```
+1_Libft/
+├── Makefile
+├── libft.h
+├── ft_*.c          # funciones de la parte 1 y 2
+├── ft_lst*_bonus.c # funciones de listas (bonus)
+└── README.md
+```
 
-#### Memory Allocation
+## 🧪 Tests
 
-| Function | Description |
-|----------|-------------|
-| `ft_calloc(size_t count, size_t size)` | Allocates and initializes memory for an array. |
+```bash
+norminette -R CheckForbiddenSourceHeader
+```
 
-### Bonus Functions (Linked Lists)
+Además de la norma, el proyecto se ha probado manualmente y con testers de la comunidad (por ejemplo, Francinette).
 
-| Function | Description |
-|----------|-------------|
-| `ft_lstnew(void *content)` | Creates a new linked list node with given content. |
-| `ft_lstadd_front(t_list **lst, t_list *new)` | Adds a new node to the front of the list. |
-| `ft_lstsize(t_list *lst)` | Returns the number of nodes in the list. |
-| `ft_lstlast(t_list *lst)` | Returns the last node of the list. |
-| `ft_lstadd_back(t_list **lst, t_list *new)` | Adds a new node to the back of the list. |
-| `ft_lstdelone(t_list *lst, void (*del)(void*))` | Deletes a single node and frees its content. |
-| `ft_lstclear(t_list **lst, void (*del)(void*))` | Deletes and frees all nodes in the list. |
-| `ft_lstiter(t_list *lst, void (*f)(void *))` | Applies a function to the content of each node. |
-| `ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))` | Creates a new list by applying a function to each node's content. |
+## 🤝 Contribuir
+Este es un proyecto académico del Common Core de 42, por lo que no se esperan contribuciones directas, pero las sugerencias y revisiones son bienvenidas. Si quieres proponer algo:
+1. Haz fork del repositorio
+2. Crea tu rama (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
+
+> ⚠️ Si eres estudiante de 42, úsalo solo como referencia: copiar código va contra las normas de la escuela.
+
+## 📄 Licencia
+Proyecto académico realizado en 42 Málaga con fines educativos.
+
+## 👤 Autor
+Alejandro Maldonado Robles - [@alexmaro10](https://github.com/alexmaro10)
